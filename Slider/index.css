@@ -3,14 +3,16 @@ body {
 }
 
 .slider{
-    display: grid;
-    grid-template-columns: 100% auto auto;
-    gap: 50px;
+    display: flex;
+    margin: 50px auto;  
 }
 
 .pic{
     position: relative;
     z-index: 1;
+    height: 500px;
+    width: 100%;
+    margin: auto auto;
 }
 
 .bi{
@@ -19,7 +21,7 @@ body {
 }
 
 .bi:hover{
-    width: 10%;
+    width: 5%;
     transition: 1s;
 }
 
@@ -34,20 +36,14 @@ body {
 }
 
 .first{
-    margin: 50px auto;
-    height: 500px;
-    width: 100%;
+    flex:3;
     background-color: #FA58B6;
 }
 .second{
-    margin: 50px auto;
-    height: 500px;
-    width: 100%;
+    flex:3;
     background-color: #7A0BC0;
 }
 .third{
-    margin: 50px auto;
-    height: 500px;
-    width: 100%;
+    flex:3;
     background-color: #270082;
 }
