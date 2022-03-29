@@ -2,17 +2,23 @@ body {
     background-color: #1A1A40;
 }
 
-.slider{
-    display: flex;
-    margin: 50px auto;  
+.slider{ 
+    overflow: hidden;
+    object-position: 500px 10px;
+}
+
+.pics{
+
 }
 
 .pic{
     position: relative;
     z-index: 1;
     height: 500px;
-    width: 100%;
+    width: 40%;
     margin: auto auto;
+    list-style: none;
+    float: left;
 }
 
 .bi{
@@ -36,14 +42,11 @@ body {
 }
 
 .first{
-    flex:3;
     background-color: #FA58B6;
 }
 .second{
-    flex:3;
     background-color: #7A0BC0;
 }
 .third{
-    flex:3;
     background-color: #270082;
 }
