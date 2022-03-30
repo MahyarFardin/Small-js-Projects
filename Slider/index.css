@@ -1,52 +1,29 @@
-body {
-    background-color: #1A1A40;
-}
-
-.slider{ 
-    overflow: hidden;
-    object-position: 500px 10px;
-}
-
-.pics{
-
-}
-
-.pic{
-    position: relative;
-    z-index: 1;
-    height: 500px;
-    width: 40%;
-    margin: auto auto;
+li{
     list-style: none;
-    float: left;
+}
+
+li img{
+    width: 100%;
+}
+
+.slides{
+    padding: 0em 0em;
+    margin: 0em auto;
+}
+
+.slide{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
 }
 
 .bi{
-    position: absolute;
-    z-index: 2;
+    position: relative;
+    z-index: 10;
 }
 
-.bi:hover{
-    width: 5%;
-    transition: 1s;
-}
-
-.bi-chevron-bar-right{
-    right: 0px;
-    bottom: 325px;
-}
-
-.bi-chevron-bar-left{
-    left: 0px;
-    bottom: 325px;
-}
-
-.first{
-    background-color: #FA58B6;
-}
-.second{
-    background-color: #7A0BC0;
-}
-.third{
-    background-color: #270082;
+.bi-left, .bi-right{
+    bottom: 50%;
 }
