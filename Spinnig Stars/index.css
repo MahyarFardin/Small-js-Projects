@@ -1,0 +1,26 @@
+.row, .row4{
+    text-align: center;
+}
+.row1, .row3{
+    display: flex;
+    column-gap: 120px;
+    justify-content: center;
+} 
+
+.row2{
+    display: flex;
+    column-gap: 300px;
+    justify-content: center;
+}
+
+body{
+    background-color: rgba(34,34,34,255);
+    font-family: 'Cedarville Cursive';
+    color: white;
+}
+
+img{
+    display: inline-block;
+    width: 8%;
+    border-radius: 50%;
+}
