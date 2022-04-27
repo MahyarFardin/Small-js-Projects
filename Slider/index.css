@@ -1,29 +1,13 @@
-li{
+.row{
+    display: flex;
+    flex-direction: row;
+}
+ul{
     list-style: none;
 }
-
-li img{
-    width: 100%;
+li{
+    margin: 0%;
 }
-
-.slides{
-    padding: 0em 0em;
-    margin: 0em auto;
-}
-
-.slide{
-    position: absolute;
-    top:0;
-    left: 0;
-    width: 100%;
-    z-index: 1;
-}
-
-.bi{
-    position: relative;
-    z-index: 10;
-}
-
-.bi-left, .bi-right{
-    bottom: 50%;
+img{
+    width: 80%;
 }
