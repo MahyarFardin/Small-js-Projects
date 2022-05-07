@@ -3,4 +3,10 @@ body{
 }
 button{
     padding: 1em 2em;
+    background-color: black;
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
 }
