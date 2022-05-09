@@ -1,0 +1,25 @@
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.container{
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 300px;
+    height: 400px;
+    margin: auto auto;
+    border-radius: 2em;
+    text-align: center;
+    text-transform: capitalize;
+}
+.container:hover{
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+
+
