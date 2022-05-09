@@ -11,10 +11,11 @@ function setPosition(position) {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
 
+    console.log(latitude+" "+longitude);
     getWeather(latitude, longitude);
 }
 
-function getWeather(longitude, latitude) {
+function getWeather(latitude, longitude) {
     let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`
     fetch(api)
         .then((jsonData) => {
