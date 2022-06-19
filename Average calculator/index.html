@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +8,37 @@
     <link rel="stylesheet" href="index.css">
     <title>Average Calculator</title>
 </head>
+
 <body>
-    <h3>Average Calculator</h3>
-    <div>
-        <input class="name" type="text" name="name" placeholder="Name">
-        <input classs="weight" type="text" name="weight" placeholder="Weight">
-        <input class="score" type="text" name="score" placeholder="Score">
-        <button onclick="test()">tsetse</button>
-    </div>
+    <main>
+        <h3>Average Calculator</h3>
+        <div>
+            <div class="inputs">
+                <input class="name" type="text" name="name" placeholder="Name">
+                <input class="weight" type="text" name="weight" placeholder="Weight">
+                <input class="score" type="text" name="score" placeholder="Score">
+            </div>
+            
+            <button onclick="add()">Add</button>
+
+
+            <table class="items">
+                <tr>
+                    <th>Name of lesson</th>
+                    <th>Weight</th>
+                    <th>Score</th>
+                    <th>Remove</th>
+                </tr>
+            </table>
+
+            <div class="information">
+                <h3 class="hweight"></h3>
+                <h3 class="hlessons"></h3>
+                <h3 class="havg"></h3>
+            </div>
+        </div>
+    </main>
     <script src="index.js"></script>
 </body>
+
 </html>

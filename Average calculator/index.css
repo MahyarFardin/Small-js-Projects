@@ -1,0 +1,28 @@
+main{
+    text-align: center;
+    margin: auto 15em;
+}
+.inputs{
+    width: 100%;
+}
+.inputs input{
+    width: 32%;
+    height: 2em;
+}
+button{
+    margin: 1em;
+    padding: .5em 2em;
+}
+table{
+    margin: auto auto;
+    width: 100%;
+}
+th,td{
+    border: 1px solid black;
+}
+.information{
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
