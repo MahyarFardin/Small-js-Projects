@@ -42,5 +42,5 @@ function locator(object) {
 }
 
 function snakeDefaultMove() {
-    document.addEventListener("onkeypress",()=>console.log(e))
+    window.onkeydown=e=>console.log(e)
 }
