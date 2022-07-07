@@ -1,6 +1,6 @@
 /*
 08D9D6
-252A34
+FF2E63
 252A34
 EAEAEA
 */
@@ -19,6 +19,7 @@ function snakeLocator() {
     locator(snake);
 
     appleLocator();
+    snakeDefaultMove(snake);
 }
 
 function appleLocator() {
@@ -28,7 +29,6 @@ function appleLocator() {
 
     locator(apple);
 
-    snakeDefaultMove();
 }
 
 
@@ -41,6 +41,45 @@ function locator(object) {
     object.style.top = horizental + 'px';
 }
 
-function snakeDefaultMove() {
-    window.onkeydown=e=>console.log(e)
+function snakeDefaultMove(snake) {
+
+    let direction;
+
+    window.onkeydown = e => {
+        if (e.key == "ArrowUp") {
+            document.getElementsByClassName("wrong-key")[0].style.display = "none"
+            snakeMove(0, snake)
+        }
+        else if (e.key === "ArrowDown") {
+            document.getElementsByClassName("wrong-key")[0].style.display = "none"
+            snakeMove(1, snake)
+        }
+        else if (e.key === "ArrowRight") {
+            document.getElementsByClassName("wrong-key")[0].style.display = "none"
+            snakeMove(2, snake)
+        }
+        else if (e.key == "ArrowLeft") {
+            document.getElementsByClassName("wrong-key")[0].style.display = "none"
+            snakeMove(3, snake)
+        }
+        else {
+            document.getElementsByClassName("wrong-key")[0].style.display = "block"
+        }
+    }
 }
+
+function snakeMove(direction, object) {
+    switch (direction) {
+        case 0:
+            object.style.top = (parseInt(object.style.top.slice(0, [object.style.top.length - 2])) - 10) + 'px';
+            sleepFunction();
+            snakeMove(0, object)
+            break
+    }
+}
+
+function sleepFunction() {
+    setTimeout(() => {}, 1000);
+}
+// object.style.left = vertical + 'px';
+// object.style.top = horizental + 'px';
