@@ -14,20 +14,25 @@
         <h3>Average Calculator</h3>
         <div>
             <div class="inputs">
-                <input class="name" type="text" name="name" placeholder="Name">
-                <input class="weight" type="text" name="weight" placeholder="Weight">
-                <input class="score" type="text" name="score" placeholder="Score">
-            </div>
-            
-            <button onclick="add()">Add</button>
+                <div class="getters">
+                    <input class="name" type="text" name="name" placeholder="Name">
+                    <input class="weight" type="text" name="weight" placeholder="Weight">
+                    <input class="score" type="text" name="score" placeholder="Score">
+                    <button onclick="add()">Add</button>
+                </div>
 
+                <div class="removers">
+                    <input type="text" class="remove" placeholder="Enter the row you want to remove">
+                    <button onclick="remove()">Remove</button>
+                </div>
+            </div>
 
             <table class="items">
                 <tr>
+                    <th>row</th>
                     <th>Name of lesson</th>
                     <th>Weight</th>
                     <th>Score</th>
-                    <th>Remove</th>
                 </tr>
             </table>
 

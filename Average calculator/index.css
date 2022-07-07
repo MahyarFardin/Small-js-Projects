@@ -2,11 +2,16 @@ main{
     text-align: center;
     margin: auto 15em;
 }
+.getters{
+    display: flex;
+    justify-content: space-between;
+}
 .inputs{
     width: 100%;
 }
-.inputs input{
-    width: 32%;
+input{
+    margin: 1em;
+    width: 20%;
     height: 2em;
 }
 button{
@@ -25,4 +30,11 @@ th,td{
     text-align: center;
     justify-content: space-between;
     flex-direction: row;
+}
+.removers{
+    display: flex;
+    justify-content: space-between;
+}
+.remove{
+    width: 80%;
 }

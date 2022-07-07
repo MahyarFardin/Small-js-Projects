@@ -1,6 +1,7 @@
 var namel = [];
 var weight = [];
 var score = [];
+var classnum = 0;
 
 document.addEventListener("keypress", e => { if (e.code == "Enter") add() });
 
@@ -13,7 +14,8 @@ function add() {
     document.querySelector(".score").value = "";
     document.querySelector(".weight").value = "";
 
-    document.querySelector(".items").innerHTML += '<tr> <td>' + namel[namel.length - 1] + '</td><td>' + weight[weight.length - 1] + '</td><td>' + score[score.length - 1] + '</td> <td><button class="remove">x</button></td> </tr>'
+    document.querySelector(".items").innerHTML += `<tr class=row${classnum}> <td>` + classnum + '</td><td>' + namel[namel.length - 1] + '</td><td>' + weight[weight.length - 1] + '</td><td>' + score[score.length - 1] + '</td> </tr>'
+    classnum++;
     update();
 }
 
@@ -30,6 +32,14 @@ function update() {
     document.querySelector(".hlessons").innerHTML = "Totall lessons:  " + weight.length;
     document.querySelector(".havg").innerHTML = "AVG: " + scoreSum / weightSum;
 
-    document.querySelector(".remove").addEventListener("click",(e)=>console.log(e.target))
+}
+
+function remove() {
+    var itemCode=document.querySelector(".remove").value;
+    document.querySelector(`.row${itemCode}`).remove();
+    namel.splice(itemCode-1,1)
+    weight.splice(itemCode-1,1)
+    score.splice(itemCode-1,1)
+    update()
 }
 
