@@ -1,12 +1,13 @@
 const board = document.getElementById("container");
 const ctx = board.getContext('2d')
 const wrong = document.getElementsByClassName("wrong-key")[0]
-const boadrBackground = "#08D9D6"
+const boadrBackground = "#252A34"
 const snakeColor = "#08D9D6"
-const snakeBorder = "#252A34"
-const appleColor = "#EAEAEA"
+const snakeBorder = "#EAEAEA"
+const appleColor = "#FF2E63"
 const unitSize = 25
 const scoreOnDoc = document.getElementById("score")
+const restart = document.getElementById("restart-sign");
 
 let running = false
 let score = 0
@@ -24,6 +25,9 @@ let snake = [
 startGame();
 
 window.addEventListener("keydown", directionShifter)
+restart.addEventListener("click", () => {
+    gameRestarter()
+})
 
 function snakeDrawer() {
     ctx.fillStyle = snakeColor
@@ -37,6 +41,12 @@ function snakeDrawer() {
 function appleDrop() {
     food.x = Math.floor(Math.random() * 500 / unitSize) * unitSize
     food.y = Math.floor(Math.random() * 500 / unitSize) * unitSize
+
+    for (let i = 1; i < snake.length; i++) {
+        if (snake[i].x == food.x && food.y == snake[0].y) {
+            appleDrop();
+        }
+    }
 }
 function appleDrow() {
     ctx.fillStyle = appleColor
@@ -70,21 +80,28 @@ function directionShifter(e) {
 }
 
 function snakeMover() {
-    const head = {
-        x: snake[0].x + xSpeed,
-        y: snake[0].y + ySpeed
-    }
+    if (running === true) {
+        const head = {
+            x: snake[0].x + xSpeed,
+            y: snake[0].y + ySpeed
+        }
 
-    snake.unshift(head)
+        snake.unshift(head)
 
-    if (snake[0].x == food.x && snake[0].y == food.y) {
-        score++;
-        scoreOnDoc.innerText = score
-        appleDrop();
-        appleDrow();
-    }
-    else {
-        snake.pop();
+        if (snake[0].x == food.x && snake[0].y == food.y) {
+            score++;
+            scoreOnDoc.innerText = score
+            appleDrop();
+            appleDrow();
+        }
+        else {
+            snake.pop();
+        }
+    } else {
+        wrong.innerText = "Game Over"
+        restart.style.display = "block"
+        wrong.style.display = "block"
+        setTimeout(() => document.location.reload(), 5000)
     }
 }
 function timeManager() {
@@ -93,16 +110,42 @@ function timeManager() {
         appleDrow();
         snakeDrawer();
         snakeMover();
+        gameOverCheck();
         timeManager();
     }, 100)
 }
 
+function gameOverCheck() {
+    switch (true) {
+        case (snake[0].x < 0):
+            running = false;
+            break;
+        case (snake[0].x >= 500):
+            running = false;
+            break;
+        case (snake[0].y < 0):
+            running = false;
+            break;
+        case (snake[0].y >= 500):
+            running = false;
+            break;
+    }
+
+    for (let i = 1; i < snake.length; i++) {
+        if (snake[i].x == snake[0].x && snake[i].y == snake[0].y) {
+            running = false;
+        }
+    }
+}
+
 function clearBoard() {
-    ctx.fillStyle = snakeBorder
+    ctx.fillStyle = boadrBackground
     ctx.fillRect(0, 0, 500, 500)
 }
 
 function startGame() {
+    running = true
+    clearBoard();
     snakeDrawer();
     appleDrop();
     timeManager();

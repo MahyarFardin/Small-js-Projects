@@ -1,45 +1,33 @@
-body{
+body {
     height: 100vh;
-    background: #252A34;   
-    font-family: 'Rubik Moonrocks'; 
+    background: #252A34;
+    font-family: 'Rubik Moonrocks';
     display: flex;
     justify-content: center;
     align-items: center;
-    color:#EAEAEA;
+    color: #EAEAEA;
     overflow-y: hidden;
 }
 
-.main-container{
+.main-container {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 100px;
 }
 
-.start-button{
-    padding: .5em 1em;
-    border-radius: 15px;
-    background-color: #EAEAEA;
-    color: #252A34;
-    font-size: 30px;
-    border: none;
-    font-family: 'Rubik Moonrocks'; 
-}
-
-.start-button:hover{
-    transform: scale(1.2);
-    transition: 2s;
-}
-
-#container{
+#container {
     border: 1px #EAEAEA solid;
 }
 
-#apple , #circle{
-    display: none;
-    width: 30px;
-}
-
-.wrong-key{
+.wrong-key {
     display: none;
     color: #FF2E63;
+}
+
+#texts h3 {
+    font-size: 50px;
+}
+
+#texts{
+    text-align: center;
 }
