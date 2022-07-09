@@ -12,11 +12,11 @@ let xSpeed = unitSize
 let ySpeed = 0
 let food = { x: 0, y: 0 }
 let snake = [
-    { x: unitSize * 4, y: 0 },
-    { x: unitSize * 3, y: 0 },
-    { x: unitSize * 2, y: 0 },
+    { x: 0, y: 0 },
     { x: unitSize, y: 0 },
-    { x: 0, y: 0 }
+    { x: unitSize * 2, y: 0 },
+    { x: unitSize * 3, y: 0 },
+    { x: unitSize * 4, y: 0 }
 ]
 
 startGame();
@@ -68,14 +68,21 @@ function snakeMover() {
         y: snake[0].y + ySpeed
     }
 
-
     snake.unshift(head)
+
+    if (snake[0].x === food.x && snake[0].y === food.y) {
+        score++;
+        appleDrop();
+    }
+    else {
+        snake.pop();
+    }
 }
 function timeManager() {
     setTimeout(() => {
-        snakeMover();
-        snakeCleaner();
         snakeDrawer();
+        snakeMover();
+        timeManager();
     }, 1000)
 }
 function snakeCleaner() {
@@ -84,6 +91,5 @@ function snakeCleaner() {
 function startGame() {
     snakeDrawer();
     appleDrop();
-    snakeMover();
     timeManager();
 }
