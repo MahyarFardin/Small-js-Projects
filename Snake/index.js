@@ -1,85 +1,89 @@
-/*
-08D9D6
-FF2E63
-252A34
-EAEAEA
-*/
+const board = document.getElementById("container");
+const ctx = board.getContext('2d')
+const wrong = document.getElementsByClassName("wrong-key")[0]
+const boadrBackground = "#08D9D6"
+const snakeColor = "#08D9D6"
+const snakeBorder = "#252A34"
+const appleColor = "#EAEAEA"
+const unitSize = 25
+let running = false
+let score = 0
+let xSpeed = unitSize
+let ySpeed = 0
+let food = { x: 0, y: 0 }
+let snake = [
+    { x: unitSize * 4, y: 0 },
+    { x: unitSize * 3, y: 0 },
+    { x: unitSize * 2, y: 0 },
+    { x: unitSize, y: 0 },
+    { x: 0, y: 0 }
+]
 
-function start(e) {
-    document.getElementsByClassName("start-button")[0].style.display = "none";
+startGame();
 
-    snakeLocator()
-}
+window.addEventListener("keydown", directionShifter)
 
-function snakeLocator() {
-    const snake = document.getElementById("circle");
-    snake.style.display = "inline-block";
-    snake.style.position = "relative";
+function snakeDrawer() {
+    ctx.fillStyle = snakeColor
+    ctx.strokeStyle = snakeBorder
 
-    locator(snake);
-
-    appleLocator();
-    snakeDefaultMove(snake);
-}
-
-function appleLocator() {
-    const apple = document.getElementById("apple");
-    apple.style.display = "inline-block";
-    apple.style.position = "relative";
-
-    locator(apple);
-
-}
-
-
-function locator(object) {
-    var vertical = Math.floor(Math.random() * 450)
-    var horizental = + Math.floor(Math.random() * 450)
-
-    object.style.position = "relative";
-    object.style.left = vertical + 'px';
-    object.style.top = horizental + 'px';
-}
-
-function snakeDefaultMove(snake) {
-
-    let direction;
-
-    window.onkeydown = e => {
-        if (e.key == "ArrowUp") {
-            document.getElementsByClassName("wrong-key")[0].style.display = "none"
-            snakeMove(0, snake)
-        }
-        else if (e.key === "ArrowDown") {
-            document.getElementsByClassName("wrong-key")[0].style.display = "none"
-            snakeMove(1, snake)
-        }
-        else if (e.key === "ArrowRight") {
-            document.getElementsByClassName("wrong-key")[0].style.display = "none"
-            snakeMove(2, snake)
-        }
-        else if (e.key == "ArrowLeft") {
-            document.getElementsByClassName("wrong-key")[0].style.display = "none"
-            snakeMove(3, snake)
-        }
-        else {
-            document.getElementsByClassName("wrong-key")[0].style.display = "block"
-        }
+    for (let index = 0; index < snake.length; index++) {
+        ctx.fillRect(snake[index].x, snake[index].y, unitSize, unitSize)
+        ctx.strokeRect(snake[index].x, snake[index].y, unitSize, unitSize)
     }
 }
+function appleDrop() {
+    food.x = Math.floor(Math.random() * 500 / unitSize) * unitSize
+    food.y = Math.floor(Math.random() * 500 / unitSize) * unitSize
 
-function snakeMove(direction, object) {
-    switch (direction) {
-        case 0:
-            object.style.top = (parseInt(object.style.top.slice(0, [object.style.top.length - 2])) - 10) + 'px';
-            sleepFunction();
-            snakeMove(0, object)
+    ctx.fillStyle = appleColor
+    ctx.fillRect(food.x, food.y, unitSize, unitSize)
+
+}
+function directionShifter(e) {
+    switch (e.keyCode) {
+        case 38:
+            wrong.style.display = "none"
+
             break
+        case 39:
+            wrong.style.display = "none"
+
+            break
+        case 40:
+            wrong.style.display = "none"
+
+            break
+        case 37:
+            wrong.style.display = "none"
+
+            break
+        default:
+            wrong.style.display = "inline-block"
     }
 }
+function snakeMover() {
+    const head = {
+        x: snake[0].x + xSpeed,
+        y: snake[0].y + ySpeed
+    }
 
-function sleepFunction() {
-    setTimeout(() => {}, 1000);
+
+    snake.unshift(head)
 }
-// object.style.left = vertical + 'px';
-// object.style.top = horizental + 'px';
+function timeManager() {
+    setTimeout(() => {
+        snakeMover();
+        snakeCleaner();
+        snakeDrawer();
+    }, 1000)
+}
+function snakeCleaner() {
+    snake.pop();
+}
+function startGame() {
+    snakeDrawer();
+    appleDrop();
+    snakeMover();
+    timeManager();
+}

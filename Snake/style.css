@@ -6,6 +6,7 @@ body{
     justify-content: center;
     align-items: center;
     color:#EAEAEA;
+    overflow-y: hidden;
 }
 
 .main-container{
@@ -30,8 +31,6 @@ body{
 }
 
 #container{
-    width: 500px;
-    height: 500px;
     border: 1px #EAEAEA solid;
 }
 
