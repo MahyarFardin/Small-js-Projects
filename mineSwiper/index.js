@@ -9,6 +9,7 @@
 const start = document.getElementsByClassName("restart-button")[0]
 const board = document.getElementById("board")
 const numberOfBombs = 9
+const gameOver = document.getElementById("game-over")
 let bombs = [];
 let boardTable = [];
 let started = true
@@ -17,7 +18,8 @@ start.addEventListener("click", () => gameControler())
 
 function gameControler() {
     start.innerText = "Restart"
-
+    board.innerHTML = ""
+    gameOver.style.display="none"
     boardDrawer();
     bombLocator();
     numbersSetter();
@@ -48,9 +50,28 @@ function bombsSetter() {
         boardTable[element.x][element.y] = -1
     })
 }
+
 function cellClickHandler(params) {
-    console.log(params.target);
+    const t = params.target.className.split(" ")
+    params.target.innerText = boardTable[t[1]][t[2]]
+    if (boardTable[t[1]][t[2]] === -1) {
+        params.target.style.backgroundColor = "#fe5f55"
+        gameOver.style.display = "block"
+        eventListenerRemover();
+    }
+    else
+        params.target.style.backgroundColor = "#495867"
 }
+
+function eventListenerRemover() {
+    const cells = document.getElementsByClassName("cell")
+
+    for (let i = 0; i < cells.length; i++) {
+        cells[i].onclick = ""
+
+    }
+}
+
 function bombLocator() {
     for (let i = 0; i < numberOfBombs; i++) {
         const x = Math.floor(Math.random() * 8)

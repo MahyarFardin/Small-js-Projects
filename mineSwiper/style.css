@@ -58,7 +58,10 @@ h1 {
 }
 
 .cell {
-    padding: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    color: #f7f7ff;
     background-color: #bdd5ea;
     border:none;
 }
