@@ -1,0 +1,16 @@
+#container{
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: baseline;
+}
+#numbers{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 10px;
+    text-align: center;
+}
+li{
+    background-color: olivedrab;
+    width: 30px;
+}
